@@ -167,8 +167,13 @@ let foodArr= [
 */
 
 //CODE HERE
+/*filtering on tag "kosher" 2 object match this, obj 3 and 5 the reuben and the cheese pizza  */
+function checker (foodItem){
+    return foodItem.tags.includes("kosher")
+}
 
-// const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+const filteredFood = foodArr.filter(checker)/* CALLBACK HERE */
+// console.log(filteredFood) /*test filtered to obj 3 and 5 cheese pizza and reuben */
 
 
 
@@ -204,7 +209,7 @@ let foodArr= [
         if it is, return objects whose value for the given
         property is greater than the `number` passed in
 
-        If the type isn't `below`, return objects whose
+        If the type is `below`, return objects whose //edited original line
         value for the given property is less than the 
         `number` passed in
     
@@ -212,6 +217,38 @@ let foodArr= [
 */
 
 //CODE HERE
+function filterByProperty (property, number, type){
+    let filteredArray = [];
+    if (type === 'above'){
+        for (let i =0; i < foodArr.length; i++){
+            if (foodArr[i][`${property}`] > number){
+                //console.log("got in")/*Test Log*/
+                filteredArray.push(foodArr[i])
+            }
+        }
+    }
+    else if (type === 'below'){
+        for (let i =0; i < foodArr.length; i++){
+            if (foodArr[i][`${property}`] < number){
+                //console.log("got in")/*Test Log*/
+                filteredArray.push(foodArr[i])
+            }
+        }
+
+    }
+    else{
+        console.log("Error, type not specified, choose 'above' or 'below', Null return")
+            }
+    return filteredArray;
+
+}
+/*Test Code should only have one answer, the pasta salad it did*/
+// let answerArr=filterByProperty("price",7,"above")/*Test Code should only have one answer, the pasta salad it did*/
+// console.log(answerArr)
+// answerArr=filterByProperty("popularity",3,"below")/*Test Code should only have one answer, the reuben it did*/
+// console.log(answerArr)
+// answerArr=filterByProperty("rating",4.7,"above")/*Test Code should three answers, reuben,blt, and cheese pizza passed*/
+// console.log(answerArr)
 
 
 /*
@@ -222,3 +259,7 @@ let foodArr= [
 */
 
 //CODE HERE
+let answerArr=filterByProperty("price",7,"above")/*Test Code should only have one answer, the pasta salad it did*/
+console.log(answerArr)//copied test code from above.  
+
+//note the instructions don't specify what to do if things are equal, so i left that out of functionality.  
