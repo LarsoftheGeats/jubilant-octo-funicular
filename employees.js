@@ -20,6 +20,16 @@
 */
 
 //CODE HERE
+class Employee {
+    constructor(name, shifts){
+        this.name=name;
+        this.shifts=shifts
+        this.getSchedule=this.getSchedule
+    }
+    getSchedule(){
+        console.log(`${this.name} works on ${this.shifts}`)
+    }
+}
 
 
 
@@ -34,6 +44,7 @@
 */
 
 //CODE HERE
+let empOne = new Employee ("Jess","weekday mornings, weekday afternoons")
 
 /*
     Call the `getSchedule` method on the
@@ -41,6 +52,8 @@
 */
 
 //CODE HERE
+empOne.getSchedule()
+
 
 
 /*
@@ -56,6 +69,11 @@
 */
 
 //CODE HERE
+let empTwo =  {...empOne}  
+empTwo.name = "Nick"
+empOne.getSchedule()
+//empTwo.getSchedule()
+//console.log(empTwo)
 
 
 
@@ -83,7 +101,26 @@
 */
 
 //CODE HERE
-
+class Manager extends Employee {
+    constructor (name, shifts, employees){
+        super(name,shifts);
+        this.employees=employees;
+    }
+    getEmployees(){
+        let empString="";
+        for (let i =0; i< this.employees.length; i++){
+            empString = empString + this.employees[i]+ " ";
+            if (i<this.employees.length-1){
+                empString = empString + "and "
+            }
+            //console.log(this.employees[i])/*testlog*/
+        }
+        console.log(`${this.name} manages ${empString}`)
+    }
+    addEmployees(emp){
+        this.employees.push(emp)
+    }
+}
 
 
 /*
@@ -98,6 +135,7 @@
 */
 
 //CODE HERE
+let manager = new Manager ("Winston", "weekday mornings, weekday afternoons", ["Cece","Schmidt"])
 
 
 /*
@@ -106,6 +144,8 @@
 */
 
 //CODE HERE
+manager.getEmployees()
+//console.log(manager.employees.length)
 
 /*
     Call the `addEmployee` method on the 
@@ -114,6 +154,7 @@
 */
 
 //CODE HERE 
+manager.addEmployees("Smitty")
 
 /*
     Call the `getEmployees` method on the
@@ -122,3 +163,4 @@
 */
 
 //CODE HERE
+manager.getEmployees()
